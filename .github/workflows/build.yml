@@ -24,11 +24,11 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
 
-      - name: Build all build type and flavor permutations
-        run: ./gradlew assemble
+      - name: Build release type and flavor permutations
+        run: ./gradlew assembleRelease
 
       - name: Upload build outputs (APKs)
         uses: actions/upload-artifact@v3
         with:
           name: build-outputs
-          path: app/build/outputs
+          path: app/build/outputs/apk/release
