@@ -34,8 +34,8 @@ jobs:
 
       - name: Self Sign
         run: |
-          keytool -genkey -v -keystore release.keystore -alias ca -keyalg RSA -keysize 2048 -validity 3653 -dname CN=CA
-          jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore release.keystore app/build/outputs/apk/release/app-release-unsigned.apk ca
+          keytool -genkey -v -keystore release.keystore -storepass 123456 -alias ca -keyalg RSA -keysize 2048 -validity 3653 -dname CN=CA
+          jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore release.keystore -storepass 123456 app/build/outputs/apk/release/app-release-unsigned.apk ca
 
       - name: Upload build outputs (APKs)
         uses: actions/upload-artifact@v3
