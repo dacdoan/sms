@@ -27,11 +27,6 @@ jobs:
       - name: Build release type and flavor permutations
         run: ./gradlew assembleRelease
 
-      - name: Uber Apk Signer
-        run: |
-          wget https://github.com/patrickfav/uber-apk-signer/releases/download/v1.3.0/uber-apk-signer-1.3.0.jar
-          java -jar uber-apk-signer-1.3.0.jar --apks app/build/outputs/apk/release
-
       - name: Self Sign
         run: |
           keytool -genkey -v -keystore release.keystore -storepass 123456 -alias ca -keyalg RSA -keysize 2048 -validity 3653 -dname CN=CA
