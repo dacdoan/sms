@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         requestPermissions(new String[] {
-                Manifest.permission.READ_SMS,
+                Manifest.permission.RECEIVE_SMS,
                 Manifest.permission.INTERNET
         }, 0);
 
