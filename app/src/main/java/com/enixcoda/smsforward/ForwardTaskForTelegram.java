@@ -29,7 +29,7 @@ public class ForwardTaskForTelegram extends AsyncTask<Void, Void, Void> {
         try {
             sendViaTelegram(
                     chatId,
-                    String.format("Message from %s:\n%s", senderNumber, message),
+                    String.format("%s: %s", senderNumber, message),
                     token
                     );
         } catch (IOException e) {
