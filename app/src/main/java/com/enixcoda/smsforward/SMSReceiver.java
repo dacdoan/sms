@@ -18,9 +18,11 @@ public class SMSReceiver extends BroadcastReceiver {
         final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
 
         final boolean enableWeb = sharedPreferences.getBoolean(context.getString(R.string.key_enable_web), false);
+        final String senderWeb = sharedPreferences.getString(context.getString(R.string.key_sender_web), ".*");
         final String targetWeb = sharedPreferences.getString(context.getString(R.string.key_target_web), "");
 
         final boolean enableTelegram = sharedPreferences.getBoolean(context.getString(R.string.key_enable_telegram), false);
+        final String senderTelegram = sharedPreferences.getString(context.getString(R.string.key_sender_telegram), ".*");
         final String targetTelegram = sharedPreferences.getString(context.getString(R.string.key_target_telegram), "");
         final String telegramToken = sharedPreferences.getString(context.getString(R.string.key_telegram_apikey), "");
 
@@ -35,9 +37,9 @@ public class SMSReceiver extends BroadcastReceiver {
             String senderNumber = currentMessage.getDisplayOriginatingAddress();
             String rawMessageContent = currentMessage.getDisplayMessageBody();
 
-            if (enableTelegram && !targetTelegram.equals("") && !telegramToken.equals(""))
+            if (enableTelegram && !targetTelegram.equals("") && !telegramToken.equals("") && senderNumber.matches(senderTelegram))
                 Forwarder.forwardViaTelegram(senderNumber, rawMessageContent, targetTelegram, telegramToken);
-            if (enableWeb && !targetWeb.equals(""))
+            if (enableWeb && !targetWeb.equals("") && senderNumber.matches(senderWeb))
                 Forwarder.forwardViaWeb(senderNumber, rawMessageContent, targetWeb);
         }
     }

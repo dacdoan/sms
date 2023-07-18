@@ -10,6 +10,13 @@
             android:key="@string/key_enable_telegram"
             app:title="@string/enable_telegram" />
         <EditTextPreference
+            android:defaultValue=".*"
+            android:key="@string/key_sender_telegram"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/title_sender"
+            app:iconSpaceReserved="false" />
+        <EditTextPreference
             android:defaultValue=""
             android:key="@string/key_target_telegram"
             android:selectAllOnFocus="true"
@@ -32,6 +39,13 @@
             app:iconSpaceReserved="false"
             android:key="@string/key_enable_web"
             app:title="@string/enable_web" />
+        <EditTextPreference
+            android:defaultValue=".*"
+            android:key="@string/key_sender_web"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/title_sender"
+            app:iconSpaceReserved="false" />
         <EditTextPreference
             android:defaultValue=""
             android:key="@string/key_target_web"
